@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float runSpeed = 8f;
     public Transform cameraTransform;
 
     private CharacterController controller;
     private Vector2 moveInput;
     private InputSystem_Actions inputActions;
     private Animator animator;
+
 
     private void Awake()
     {
