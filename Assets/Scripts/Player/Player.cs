@@ -1,5 +1,6 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; 
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -8,12 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed = 9f;
     public Transform cameraTransform;
 
+    [Header("Inventário de Sementes")]
+    public PlayerInventory playerInventory;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private InputSystem inputActions;
     private Animator animator;
 
     private float currentSpeed;
+
+    private SeedPickup currentSeedPickup;
+    private bool isPickingUp = false;
 
     private void Awake()
     {
@@ -28,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Sprint.started += OnSprintStart;
         inputActions.Player.Sprint.canceled += OnSprintEnd;
+
+        inputActions.Player.Interact.performed += OnInteract;
     }
 
     private void OnDisable()
@@ -38,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Sprint.started -= OnSprintStart;
         inputActions.Player.Sprint.canceled -= OnSprintEnd;
 
+        inputActions.Player.Interact.performed -= OnInteract; 
+
         inputActions.Player.Disable();
     }
 
@@ -47,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         currentSpeed = walkSpeed;
         animator.SetBool("IsSprinting", false);
+
+        if (playerInventory == null)
+        {
+            Debug.LogError("PlayerInventory não atribuído ao PlayerMovement no Inspector!", this);
+        }
     }
 
     private void Update()
@@ -71,9 +87,61 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsSprinting", false);
     }
 
+    private float GetAnimationClipLength(string clipName)
+    {
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
+        foreach (var clip in ac.animationClips)
+        {
+            if (clip.name == clipName)
+                return clip.length;
+        }
+        return 1f;
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if (currentSeedPickup != null && !isPickingUp)
+        {
+            SeedController seedController = currentSeedPickup.GetComponentInParent<SeedController>();
+            if (seedController != null && seedController.selectedSeed != null)
+            {
+                isPickingUp = true;
+                animator.SetBool("IsPickingUp", true);
+
+                float pickupDuration = GetAnimationClipLength("Pickup");
+                StartCoroutine(FinishPickup(pickupDuration, seedController));
+            }
+        }
+    }
+
+    private IEnumerator FinishPickup(float delay, SeedController seedController)
+    {
+        yield return new WaitForSeconds(delay);
+
+        bool added = playerInventory.AddSeed(seedController.selectedSeed, 1);
+
+        if (added)
+        {
+            Debug.Log($"Você pegou 1x {seedController.selectedSeed.seedName}.");
+            InteractionManager.Instance.Hide();
+
+            Destroy(currentSeedPickup.transform.parent.gameObject);
+            currentSeedPickup = null;
+        }
+        else
+        {
+            Debug.Log($"Não foi possível pegar {seedController.selectedSeed.seedName}. Inventário cheio!");
+        }
+
+        currentSeedPickup = null;
+        isPickingUp = false;
+        animator.SetBool("IsPickingUp", false);
+    }
+
 
     private void Movement()
     {
+        if (isPickingUp) return;
         Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         Vector3 camForward = cameraTransform.forward;
@@ -91,5 +159,15 @@ public class PlayerMovement : MonoBehaviour
 
         Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
+    }
+
+    public void SetCurrentSeedPickup(SeedPickup seed)
+    {
+        currentSeedPickup = seed;
+    }
+
+    public void ClearCurrentSeedPickup()
+    {
+        currentSeedPickup = null;
     }
 }
