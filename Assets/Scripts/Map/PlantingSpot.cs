@@ -1,23 +1,41 @@
 using UnityEngine;
-using System.Collections; 
+using System.Collections;
+using DG.Tweening;
 
 public class PlantingSpot : MonoBehaviour
 {
     public bool isOccupied { get; private set; } = false;
     public SeedData plantedSeed { get; private set; } = null;
+
     public bool isGrowing { get; private set; } = false;
     public bool isReadyToHarvest { get; private set; } = false;
 
     private Renderer spotRenderer;
 
     [Header("Visuals (Optional)")]
-    public Material availableMaterial; 
-    public Material growingMaterial;   
-    public Material readyMaterial;     
+    public Material availableMaterial;
+    public Material growingMaterial;
+    public Material readyMaterial;
 
-    [Header("Time Display")] 
-    public GameObject plantTimeDisplayPrefab; 
+    [Header("Time Display")]
+    public GameObject plantTimeDisplayPrefab;
     private PlantTimeDisplay currentPlantTimeDisplay;
+
+    private GameObject currentPlantModelInstance;
+    private Renderer currentPlantModelRenderer;
+
+    [Header("Growth Stages")]
+    [Range(0, 1)] public float sproutStagePercentage = 0.3f;
+    [Range(0, 1)] public float adultStagePercentage = 0.6f;
+
+    [Header("Sprout Animation")]
+    public float sproutAppearDuration = 0.5f;
+
+    [Header("Adult Plant Animation")]
+    public float initialAdultYPosition = -6f;
+    public float finalAdultYPosition = 0f;
+
+    private PlayerMovement playerMovement;
 
     private void Awake()
     {
@@ -35,10 +53,11 @@ public class PlantingSpot : MonoBehaviour
             currentPlantTimeDisplay.Hide();
         }
     }
+
     public bool TryPlantSeed(SeedData seedToPlant)
     {
-        if (isOccupied) { return false; }
-        if (seedToPlant == null) { return false; }
+        if (isOccupied) { Debug.LogWarning("Este local já está ocupado."); return false; }
+        if (seedToPlant == null) { Debug.LogWarning("Tentou plantar uma semente nula."); return false; }
 
         plantedSeed = seedToPlant;
         isOccupied = true;
@@ -55,12 +74,135 @@ public class PlantingSpot : MonoBehaviour
         }
 
         UpdateVisualState();
+
+        if (QuestUIManager.Instance != null)
+        {
+            QuestUIManager.Instance.OnSeedPlanted();
+        }
+
         return true;
     }
 
     private IEnumerator GrowPlantCoroutine(float growthDuration)
     {
-        yield return new WaitForSeconds(growthDuration);
+        float timer = 0f;
+        DestroyCurrentPlantModel(true);
+
+        Debug.Log($"Iniciando crescimento para {plantedSeed.seedName}. Duração: {growthDuration}s");
+
+        bool sproutInstantiated = false;
+        bool adultInstantiated = false;
+
+        while (timer < growthDuration)
+        {
+            timer += Time.deltaTime;
+            float progress = timer / growthDuration;
+
+            if (progress >= adultStagePercentage)
+            {
+                if (!adultInstantiated)
+                {
+                    Debug.Log("Transição para estágio ADULTO. Instanciando e iniciando animações.");
+
+                    if (currentPlantModelInstance != null && currentPlantModelInstance == plantedSeed.sproutPrefab)
+                    {
+                        currentPlantModelInstance.transform.DOScale(Vector3.zero, sproutAppearDuration)
+                            .SetEase(Ease.InQuad)
+                            .OnComplete(() => DestroyCurrentPlantModel(false)) 
+                            .SetLink(currentPlantModelInstance.gameObject); 
+                    }
+                    else
+                    {
+                        DestroyCurrentPlantModel(true);
+                    }
+
+                    yield return new WaitForSeconds(sproutAppearDuration * 0.5f); 
+
+                    currentPlantModelInstance = Instantiate(plantedSeed.adultPlantPrefab, transform.position, Quaternion.identity, transform);
+                    currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
+
+                    Vector3 startLocalPos = currentPlantModelInstance.transform.localPosition;
+                    startLocalPos.y = initialAdultYPosition;
+                    currentPlantModelInstance.transform.localPosition = startLocalPos;
+
+                    currentPlantModelInstance.transform.localScale = Vector3.zero;
+
+                    float remainingGrowthTime = growthDuration * (1f - adultStagePercentage);
+
+                    currentPlantModelInstance.transform.DOLocalMoveY(finalAdultYPosition, remainingGrowthTime)
+                        .SetEase(Ease.OutQuad)
+                        .SetLink(currentPlantModelInstance.gameObject);
+
+                    currentPlantModelInstance.transform.DOScale(Vector3.one * 10f, remainingGrowthTime)
+                        .SetEase(Ease.OutQuad)
+                        .SetLink(currentPlantModelInstance.gameObject)
+                        .OnComplete(() => Debug.Log("Animação de crescimento adulta COMPLETA."));
+
+                    adultInstantiated = true;
+                }
+            }
+            else if (progress >= sproutStagePercentage)
+            {
+                if (!sproutInstantiated)
+                {
+                    Debug.Log("Transição para estágio BROTINHO. Instanciando e iniciando animações.");
+                    DestroyCurrentPlantModel(true);
+                    currentPlantModelInstance = Instantiate(plantedSeed.sproutPrefab, transform.position, Quaternion.identity, transform);
+                    currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
+
+                    currentPlantModelInstance.transform.localScale = Vector3.zero; 
+                    currentPlantModelInstance.transform.DOScale(Vector3.one * 10f, sproutAppearDuration)
+                        .SetEase(Ease.OutQuad)
+                        .SetLink(currentPlantModelInstance.gameObject);
+
+                    sproutInstantiated = true;
+                }
+
+                if (currentPlantModelRenderer != null && currentPlantModelRenderer.material != null)
+                {
+                    if (!currentPlantModelRenderer.material.name.Contains(" (Instance)"))
+                    {
+                        currentPlantModelRenderer.material = new Material(currentPlantModelRenderer.material);
+                    }
+
+                    float deadColorProgress = Mathf.InverseLerp(sproutStagePercentage, adultStagePercentage, progress);
+                    Color deadColor = plantedSeed.color;
+                    Color.RGBToHSV(plantedSeed.color, out float h, out float s, out float v);
+                    deadColor = Color.HSVToRGB(h, s * 0.5f, v * 0.5f);
+                    deadColor.a = 1f;
+
+                    currentPlantModelRenderer.material.color = Color.Lerp(deadColor, plantedSeed.color, deadColorProgress);
+                }
+            }
+            else 
+            {
+                DestroyCurrentPlantModel(true);
+                sproutInstantiated = false;
+                adultInstantiated = false;
+            }
+
+            yield return null;
+        }
+
+        Debug.Log($"Fim do crescimento para {plantedSeed.seedName}. Garantindo estado final.");
+
+        if (currentPlantModelInstance == null || currentPlantModelInstance != plantedSeed.adultPlantPrefab)
+        {
+            Debug.Log("Instanciando planta adulta final no 100% (fallback).");
+            DestroyCurrentPlantModel(true);
+            currentPlantModelInstance = Instantiate(plantedSeed.adultPlantPrefab, transform.position, Quaternion.identity, transform);
+            currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
+        }
+
+        currentPlantModelInstance.transform.localScale = Vector3.one * 10f;
+        Vector3 finalPos = currentPlantModelInstance.transform.localPosition;
+        finalPos.y = finalAdultYPosition;
+        currentPlantModelInstance.transform.localPosition = finalPos;
+
+        if (currentPlantModelInstance != null)
+        {
+            currentPlantModelInstance.transform.DOKill(true);
+        }
 
         isGrowing = false;
         isReadyToHarvest = true;
@@ -70,23 +212,51 @@ public class PlantingSpot : MonoBehaviour
         {
             currentPlantTimeDisplay.Hide();
         }
-
         UpdateVisualState();
     }
 
     public SeedData HarvestPlant()
     {
-        if (!isOccupied || !isReadyToHarvest) {return null; }
+        if (!isOccupied || !isReadyToHarvest)
+        {
+            Debug.LogWarning("Não há nada para colher ou a planta ainda não cresceu.");
+            return null;
+        }
 
         SeedData harvestedSeed = plantedSeed;
 
-        if (currentPlantTimeDisplay != null)
+        isOccupied = false;
+        plantedSeed = null;
+        isGrowing = false;
+        isReadyToHarvest = false;
+
+        Debug.Log($"Planta de {harvestedSeed.seedName} colhida em {gameObject.name}!");
+
+        DestroyCurrentPlantModel(true);
+        if (currentPlantTimeDisplay != null) { currentPlantTimeDisplay.Hide(); }
+        UpdateVisualState();
+
+        if (QuestUIManager.Instance != null)
         {
-            currentPlantTimeDisplay.Hide();
+            QuestUIManager.Instance.OnPlantHarvested();
         }
 
-        UpdateVisualState();
         return harvestedSeed;
+    }
+
+
+    private void DestroyCurrentPlantModel(bool killTweensImmediately)
+    {
+        if (currentPlantModelInstance != null)
+        {
+            if (killTweensImmediately)
+            {
+                currentPlantModelInstance.transform.DOKill(true);
+            }
+            Destroy(currentPlantModelInstance);
+            currentPlantModelInstance = null;
+            currentPlantModelRenderer = null;
+        }
     }
 
     private void UpdateVisualState()
@@ -105,11 +275,8 @@ public class PlantingSpot : MonoBehaviour
             {
                 spotRenderer.material = availableMaterial;
             }
-
         }
     }
-
-    private PlayerMovement playerMovement;
 
     private void OnTriggerEnter(Collider other)
     {

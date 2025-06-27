@@ -7,4 +7,8 @@ public class SeedData : ScriptableObject
     public float growthTime;
     public Sprite icon;
     public Color color;
+
+    [Header("Plant Models")]
+    public GameObject sproutPrefab;
+    public GameObject adultPlantPrefab; 
 }

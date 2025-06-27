@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8910985952181140015}
   - component: {fileID: 1328815681088069910}
   - component: {fileID: 8740866533830395657}
-  - component: {fileID: 4916710316254241242}
+  - component: {fileID: 1008949627005558209}
   m_Layer: 3
   m_Name: PlantingSpot
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.507, y: 0.01, z: 5.503}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,6 +128,11 @@ MonoBehaviour:
   growingMaterial: {fileID: 2100000, guid: bda16e77d264ed04dac213b55cf51d88, type: 2}
   readyMaterial: {fileID: 2100000, guid: 3d9f5547fc7dec9478922989746dc4eb, type: 2}
   plantTimeDisplayPrefab: {fileID: 3635444283052543960, guid: 697ec25617767294d92c079279fba145, type: 3}
+  sproutStagePercentage: 0.3
+  adultStagePercentage: 0.6
+  sproutAppearDuration: 0.5
+  initialAdultYPosition: -5
+  finalAdultYPosition: 0
 --- !u!65 &8740866533830395657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,8 +154,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &4916710316254241242
-SphereCollider:
+--- !u!136 &1008949627005558209
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,6 +172,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 8.723013
-  m_Center: {x: -0.59176683, y: 1.9505739, z: 0}
+  serializedVersion: 2
+  m_Radius: 4.9585843
+  m_Height: 12.962517
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4812487, z: -0.04141569}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6665d3b6103d81946b889a9b189d85a4, type: 3}
+  m_Name: Purple
+  m_EditorClassIdentifier: 
+  seedName: Semente Roxa
+  growthTime: 30
+  icon: {fileID: 21300000, guid: cd6c6fc00c2d60f4f8d15fe1f7ef4212, type: 3}
+  color: {r: 0.27450982, g: 0.15294118, b: 0.45098042, a: 1}
+  sproutPrefab: {fileID: 3954952008511127009, guid: c7beb6c780704124782c5815e46e531f, type: 3}
+  adultPlantPrefab: {fileID: 5208390253047380716, guid: cf35d2ad83db5f14a964bdc16c3c641d, type: 3}

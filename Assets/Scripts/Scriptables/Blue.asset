@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6665d3b6103d81946b889a9b189d85a4, type: 3}
   m_Name: Blue
   m_EditorClassIdentifier: 
-  seedName: Blue Seed
-  growthTime: 30
+  seedName: Semente Azul
+  growthTime: 10
   icon: {fileID: 21300000, guid: 82c3d6ec120459142a46911f8e58acd5, type: 3}
-  color: {r: 0, g: 0.4535954, b: 1, a: 1}
+  color: {r: 0.42352945, g: 0.65882355, b: 0.64705884, a: 1}
+  sproutPrefab: {fileID: 3521329490293630005, guid: d0b14db8226d4d44589c936b61372e61, type: 3}
+  adultPlantPrefab: {fileID: 5881889814047730137, guid: d1741d01d99dc384d98af545a405e932, type: 3}

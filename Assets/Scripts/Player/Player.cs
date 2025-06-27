@@ -179,6 +179,11 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(currentSeedPickup.transform.parent.gameObject);
             currentSeedPickup = null;
+
+            if (QuestUIManager.Instance != null)
+            {
+                QuestUIManager.Instance.OnSeedPickedUp();
+            }
         }
         else
         {
