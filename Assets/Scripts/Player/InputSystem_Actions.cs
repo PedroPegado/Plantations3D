@@ -1076,6 +1076,174 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Hotbar"",
+            ""id"": ""7961978f-192b-4a74-b0d9-12d35b18ccd9"",
+            ""actions"": [
+                {
+                    ""name"": ""SelectSlot1"",
+                    ""type"": ""Button"",
+                    ""id"": ""e92294c0-da79-4ba2-b159-5ae59906d09f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""17fd0041-e6db-415e-915f-6b02c27edc78"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3e88789-2fda-450f-9430-4ba4bd6207cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot4"",
+                    ""type"": ""Button"",
+                    ""id"": ""a80b1ee2-05fc-4ec4-be1a-98b2ddc182c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot5"",
+                    ""type"": ""Button"",
+                    ""id"": ""953af740-4e96-4ab8-87d3-5dbeaec27b84"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot6"",
+                    ""type"": ""Button"",
+                    ""id"": ""41194bf5-d363-4f5c-bb7a-d6696612cda9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot7"",
+                    ""type"": ""Button"",
+                    ""id"": ""e280c3fe-4a96-4a18-ab97-fdacba513867"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSlot8"",
+                    ""type"": ""Button"",
+                    ""id"": ""665a5cd2-6d79-4e3c-bc4b-35a457489c01"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""62f4d314-daa7-431b-b161-a9ba2ff9b10a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27418be0-8faf-451c-b335-36e80d14d2ab"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51e94f3d-fe06-4561-99be-ded612be0c08"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbe1f2db-6d91-4d03-8359-49427683b144"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccd3195a-8c02-480e-86d0-14ce1b21c9bb"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3c9365d-50bd-4a08-aea2-9da3e43c31f0"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d0f9d4c-de84-4e0b-a79c-3362c2394416"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de7c7e19-58bc-4a32-8405-821a91a2cad7"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSlot8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1164,12 +1332,23 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Hotbar
+        m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
+        m_Hotbar_SelectSlot1 = m_Hotbar.FindAction("SelectSlot1", throwIfNotFound: true);
+        m_Hotbar_SelectSlot2 = m_Hotbar.FindAction("SelectSlot2", throwIfNotFound: true);
+        m_Hotbar_SelectSlot3 = m_Hotbar.FindAction("SelectSlot3", throwIfNotFound: true);
+        m_Hotbar_SelectSlot4 = m_Hotbar.FindAction("SelectSlot4", throwIfNotFound: true);
+        m_Hotbar_SelectSlot5 = m_Hotbar.FindAction("SelectSlot5", throwIfNotFound: true);
+        m_Hotbar_SelectSlot6 = m_Hotbar.FindAction("SelectSlot6", throwIfNotFound: true);
+        m_Hotbar_SelectSlot7 = m_Hotbar.FindAction("SelectSlot7", throwIfNotFound: true);
+        m_Hotbar_SelectSlot8 = m_Hotbar.FindAction("SelectSlot8", throwIfNotFound: true);
     }
 
     ~@InputSystem()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Hotbar.enabled, "This will cause a leak and performance issues, InputSystem.Hotbar.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1620,6 +1799,179 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Hotbar
+    private readonly InputActionMap m_Hotbar;
+    private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
+    private readonly InputAction m_Hotbar_SelectSlot1;
+    private readonly InputAction m_Hotbar_SelectSlot2;
+    private readonly InputAction m_Hotbar_SelectSlot3;
+    private readonly InputAction m_Hotbar_SelectSlot4;
+    private readonly InputAction m_Hotbar_SelectSlot5;
+    private readonly InputAction m_Hotbar_SelectSlot6;
+    private readonly InputAction m_Hotbar_SelectSlot7;
+    private readonly InputAction m_Hotbar_SelectSlot8;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Hotbar".
+    /// </summary>
+    public struct HotbarActions
+    {
+        private @InputSystem m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public HotbarActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot1".
+        /// </summary>
+        public InputAction @SelectSlot1 => m_Wrapper.m_Hotbar_SelectSlot1;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot2".
+        /// </summary>
+        public InputAction @SelectSlot2 => m_Wrapper.m_Hotbar_SelectSlot2;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot3".
+        /// </summary>
+        public InputAction @SelectSlot3 => m_Wrapper.m_Hotbar_SelectSlot3;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot4".
+        /// </summary>
+        public InputAction @SelectSlot4 => m_Wrapper.m_Hotbar_SelectSlot4;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot5".
+        /// </summary>
+        public InputAction @SelectSlot5 => m_Wrapper.m_Hotbar_SelectSlot5;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot6".
+        /// </summary>
+        public InputAction @SelectSlot6 => m_Wrapper.m_Hotbar_SelectSlot6;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot7".
+        /// </summary>
+        public InputAction @SelectSlot7 => m_Wrapper.m_Hotbar_SelectSlot7;
+        /// <summary>
+        /// Provides access to the underlying input action "Hotbar/SelectSlot8".
+        /// </summary>
+        public InputAction @SelectSlot8 => m_Wrapper.m_Hotbar_SelectSlot8;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Hotbar; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="HotbarActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(HotbarActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="HotbarActions" />
+        public void AddCallbacks(IHotbarActions instance)
+        {
+            if (instance == null || m_Wrapper.m_HotbarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Add(instance);
+            @SelectSlot1.started += instance.OnSelectSlot1;
+            @SelectSlot1.performed += instance.OnSelectSlot1;
+            @SelectSlot1.canceled += instance.OnSelectSlot1;
+            @SelectSlot2.started += instance.OnSelectSlot2;
+            @SelectSlot2.performed += instance.OnSelectSlot2;
+            @SelectSlot2.canceled += instance.OnSelectSlot2;
+            @SelectSlot3.started += instance.OnSelectSlot3;
+            @SelectSlot3.performed += instance.OnSelectSlot3;
+            @SelectSlot3.canceled += instance.OnSelectSlot3;
+            @SelectSlot4.started += instance.OnSelectSlot4;
+            @SelectSlot4.performed += instance.OnSelectSlot4;
+            @SelectSlot4.canceled += instance.OnSelectSlot4;
+            @SelectSlot5.started += instance.OnSelectSlot5;
+            @SelectSlot5.performed += instance.OnSelectSlot5;
+            @SelectSlot5.canceled += instance.OnSelectSlot5;
+            @SelectSlot6.started += instance.OnSelectSlot6;
+            @SelectSlot6.performed += instance.OnSelectSlot6;
+            @SelectSlot6.canceled += instance.OnSelectSlot6;
+            @SelectSlot7.started += instance.OnSelectSlot7;
+            @SelectSlot7.performed += instance.OnSelectSlot7;
+            @SelectSlot7.canceled += instance.OnSelectSlot7;
+            @SelectSlot8.started += instance.OnSelectSlot8;
+            @SelectSlot8.performed += instance.OnSelectSlot8;
+            @SelectSlot8.canceled += instance.OnSelectSlot8;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="HotbarActions" />
+        private void UnregisterCallbacks(IHotbarActions instance)
+        {
+            @SelectSlot1.started -= instance.OnSelectSlot1;
+            @SelectSlot1.performed -= instance.OnSelectSlot1;
+            @SelectSlot1.canceled -= instance.OnSelectSlot1;
+            @SelectSlot2.started -= instance.OnSelectSlot2;
+            @SelectSlot2.performed -= instance.OnSelectSlot2;
+            @SelectSlot2.canceled -= instance.OnSelectSlot2;
+            @SelectSlot3.started -= instance.OnSelectSlot3;
+            @SelectSlot3.performed -= instance.OnSelectSlot3;
+            @SelectSlot3.canceled -= instance.OnSelectSlot3;
+            @SelectSlot4.started -= instance.OnSelectSlot4;
+            @SelectSlot4.performed -= instance.OnSelectSlot4;
+            @SelectSlot4.canceled -= instance.OnSelectSlot4;
+            @SelectSlot5.started -= instance.OnSelectSlot5;
+            @SelectSlot5.performed -= instance.OnSelectSlot5;
+            @SelectSlot5.canceled -= instance.OnSelectSlot5;
+            @SelectSlot6.started -= instance.OnSelectSlot6;
+            @SelectSlot6.performed -= instance.OnSelectSlot6;
+            @SelectSlot6.canceled -= instance.OnSelectSlot6;
+            @SelectSlot7.started -= instance.OnSelectSlot7;
+            @SelectSlot7.performed -= instance.OnSelectSlot7;
+            @SelectSlot7.canceled -= instance.OnSelectSlot7;
+            @SelectSlot8.started -= instance.OnSelectSlot8;
+            @SelectSlot8.performed -= instance.OnSelectSlot8;
+            @SelectSlot8.canceled -= instance.OnSelectSlot8;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="HotbarActions.UnregisterCallbacks(IHotbarActions)" />.
+        /// </summary>
+        /// <seealso cref="HotbarActions.UnregisterCallbacks(IHotbarActions)" />
+        public void RemoveCallbacks(IHotbarActions instance)
+        {
+            if (m_Wrapper.m_HotbarActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="HotbarActions.AddCallbacks(IHotbarActions)" />
+        /// <seealso cref="HotbarActions.RemoveCallbacks(IHotbarActions)" />
+        /// <seealso cref="HotbarActions.UnregisterCallbacks(IHotbarActions)" />
+        public void SetCallbacks(IHotbarActions instance)
+        {
+            foreach (var item in m_Wrapper.m_HotbarActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="HotbarActions" /> instance referencing this action map.
+    /// </summary>
+    public HotbarActions @Hotbar => new HotbarActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1833,5 +2185,69 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Hotbar" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="HotbarActions.AddCallbacks(IHotbarActions)" />
+    /// <seealso cref="HotbarActions.RemoveCallbacks(IHotbarActions)" />
+    public interface IHotbarActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot7(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectSlot8" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSlot8(InputAction.CallbackContext context);
     }
 }

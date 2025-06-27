@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private SeedPickup currentSeedPickup;
     private bool isPickingUp = false;
+    private PlantingSpot currentPlantingSpot;
 
     private void Awake()
     {
@@ -112,6 +113,57 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(FinishPickup(pickupDuration, seedController));
             }
         }
+
+        if (currentPlantingSpot != null)
+        {
+            if (currentPlantingSpot.isReadyToHarvest)
+            {
+                SeedData harvestedItem = currentPlantingSpot.HarvestPlant();
+                if (harvestedItem != null)
+                {
+                    playerInventory.AddSeed(harvestedItem, 1); 
+                    Debug.Log($"Você colheu 1x {harvestedItem.seedName}.");
+                }
+            }
+            else if (!currentPlantingSpot.isOccupied)
+            {
+                HotbarUI hotbarUI = FindObjectOfType<HotbarUI>(); 
+                if (hotbarUI != null)
+                {
+                    SeedData selectedSeed = hotbarUI.GetSelectedSeed();
+                    if (selectedSeed != null)
+                    {
+                        if (playerInventory.GetSeedQuantity(selectedSeed) > 0)
+                        {
+                            bool planted = currentPlantingSpot.TryPlantSeed(selectedSeed);
+                            if (planted)
+                            {
+                                playerInventory.RemoveSeed(selectedSeed, 1); 
+                                InteractionManager.Instance.Hide();
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log($"Você não tem mais {selectedSeed.seedName} para plantar!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Nenhuma semente selecionada na hotbar para plantar.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("HotbarUI não encontrada na cena. Não é possível plantar.");
+                }
+            }
+            else if (currentPlantingSpot.isGrowing)
+            {
+                Debug.Log("A planta ainda está crescendo. Não pode interagir.");
+            }
+            return;
+        }
+        Debug.Log("Nenhum item ou local de plantio para interagir.");
     }
 
     private IEnumerator FinishPickup(float delay, SeedController seedController)
@@ -169,5 +221,29 @@ public class PlayerMovement : MonoBehaviour
     public void ClearCurrentSeedPickup()
     {
         currentSeedPickup = null;
+    }
+
+    public void SetCurrentPlantingSpot(PlantingSpot spot)
+    {
+        currentPlantingSpot = spot;
+    }
+
+    public void ClearCurrentPlantingSpot()
+    {
+        currentPlantingSpot = null;
+    }
+
+    public string GetSelectedSeedName()
+    {
+        HotbarUI hotbarUI = FindObjectOfType<HotbarUI>();
+        if (hotbarUI != null)
+        {
+            SeedData selectedSeed = hotbarUI.GetSelectedSeed();
+            if (selectedSeed != null)
+            {
+                return selectedSeed.seedName;
+            }
+        }
+        return "nada"; 
     }
 }

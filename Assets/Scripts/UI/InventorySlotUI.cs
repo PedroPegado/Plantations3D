@@ -5,7 +5,8 @@ using TMPro;
 public class InventorySlotUI : MonoBehaviour
 {
     public Image iconImage;
-    public TextMeshProUGUI quantityText; 
+    public TextMeshProUGUI quantityText;
+    public GameObject selectionBorder; 
 
     public void UpdateSlot(SeedData seed, int quantity)
     {
@@ -22,6 +23,15 @@ public class InventorySlotUI : MonoBehaviour
             iconImage.enabled = false;
             quantityText.text = "";
             quantityText.enabled = false;
+        }
+        SetSelected(false);
+    }
+
+    public void SetSelected(bool selected)
+    {
+        if (selectionBorder != null)
+        {
+            selectionBorder.SetActive(selected);
         }
     }
 }
