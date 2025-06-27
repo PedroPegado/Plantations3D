@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83119f20eab2cab4d9d790de621aec08, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  inventorySlots: []
+  inventorySlots:
+  - seed: {fileID: 11400000, guid: c032a00d4dab5b349a05ec2e556b1b5d, type: 2}
+    quantity: 24
+  - seed: {fileID: 11400000, guid: ef43176ad1826244e940230ec973e146, type: 2}
+    quantity: 1
   maxInventorySlots: 8
