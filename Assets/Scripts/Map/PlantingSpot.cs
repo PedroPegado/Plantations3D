@@ -35,6 +35,9 @@ public class PlantingSpot : MonoBehaviour
     public float initialAdultYPosition = -6f;
     public float finalAdultYPosition = 0f;
 
+    [Header("VFX")] 
+    public GameObject growthCompleteVFXPrefab;
+
     private PlayerMovement playerMovement;
 
     private void Awake()
@@ -86,7 +89,6 @@ public class PlantingSpot : MonoBehaviour
     private IEnumerator GrowPlantCoroutine(float growthDuration)
     {
         float timer = 0f;
-        DestroyCurrentPlantModel(true);
 
         Debug.Log($"Iniciando crescimento para {plantedSeed.seedName}. Duração: {growthDuration}s");
 
@@ -108,15 +110,15 @@ public class PlantingSpot : MonoBehaviour
                     {
                         currentPlantModelInstance.transform.DOScale(Vector3.zero, sproutAppearDuration)
                             .SetEase(Ease.InQuad)
-                            .OnComplete(() => DestroyCurrentPlantModel(false)) 
-                            .SetLink(currentPlantModelInstance.gameObject); 
+                            .OnComplete(() => DestroyCurrentPlantModel(false))
+                            .SetLink(currentPlantModelInstance.gameObject);
+
+                        yield return new WaitForSeconds(sproutAppearDuration);
                     }
                     else
                     {
                         DestroyCurrentPlantModel(true);
                     }
-
-                    yield return new WaitForSeconds(sproutAppearDuration * 0.5f); 
 
                     currentPlantModelInstance = Instantiate(plantedSeed.adultPlantPrefab, transform.position, Quaternion.identity, transform);
                     currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
@@ -133,7 +135,7 @@ public class PlantingSpot : MonoBehaviour
                         .SetEase(Ease.OutQuad)
                         .SetLink(currentPlantModelInstance.gameObject);
 
-                    currentPlantModelInstance.transform.DOScale(Vector3.one * 10f, remainingGrowthTime)
+                    currentPlantModelInstance.transform.DOScale(Vector3.one * 1.5f, remainingGrowthTime) 
                         .SetEase(Ease.OutQuad)
                         .SetLink(currentPlantModelInstance.gameObject)
                         .OnComplete(() => Debug.Log("Animação de crescimento adulta COMPLETA."));
@@ -146,12 +148,12 @@ public class PlantingSpot : MonoBehaviour
                 if (!sproutInstantiated)
                 {
                     Debug.Log("Transição para estágio BROTINHO. Instanciando e iniciando animações.");
-                    DestroyCurrentPlantModel(true);
-                    currentPlantModelInstance = Instantiate(plantedSeed.sproutPrefab, transform.position, Quaternion.identity, transform);
+                    DestroyCurrentPlantModel(true); 
+                    currentPlantModelInstance = Instantiate(plantedSeed.sproutPrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity, transform);
                     currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
 
                     currentPlantModelInstance.transform.localScale = Vector3.zero; 
-                    currentPlantModelInstance.transform.DOScale(Vector3.one * 10f, sproutAppearDuration)
+                    currentPlantModelInstance.transform.DOScale(Vector3.one * 1.5f, sproutAppearDuration)
                         .SetEase(Ease.OutQuad)
                         .SetLink(currentPlantModelInstance.gameObject);
 
@@ -174,7 +176,7 @@ public class PlantingSpot : MonoBehaviour
                     currentPlantModelRenderer.material.color = Color.Lerp(deadColor, plantedSeed.color, deadColorProgress);
                 }
             }
-            else 
+            else
             {
                 DestroyCurrentPlantModel(true);
                 sproutInstantiated = false;
@@ -194,7 +196,7 @@ public class PlantingSpot : MonoBehaviour
             currentPlantModelRenderer = currentPlantModelInstance.GetComponentInChildren<Renderer>();
         }
 
-        currentPlantModelInstance.transform.localScale = Vector3.one * 10f;
+        currentPlantModelInstance.transform.localScale = Vector3.one * 1.5f; // Escala final ajustada
         Vector3 finalPos = currentPlantModelInstance.transform.localPosition;
         finalPos.y = finalAdultYPosition;
         currentPlantModelInstance.transform.localPosition = finalPos;
@@ -207,6 +209,7 @@ public class PlantingSpot : MonoBehaviour
         isGrowing = false;
         isReadyToHarvest = true;
         Debug.Log($"Planta de {plantedSeed.seedName} cresceu e está pronta para colher em {gameObject.name}!");
+        Play(growthCompleteVFXPrefab);
 
         if (currentPlantTimeDisplay != null)
         {

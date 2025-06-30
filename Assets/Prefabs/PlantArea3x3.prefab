@@ -112,11 +112,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7557133185349562091, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_Name
       value: PlantingSpot (5)
@@ -182,11 +186,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -228,6 +232,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7557133185349562091, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_Name
       value: PlantingSpot (2)
@@ -252,11 +260,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -296,6 +304,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512588539914210215, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7557133185349562091, guid: 1b8a3b7bf9c1f2d4fa5b5ae873766b4d, type: 3}
