@@ -27,15 +27,24 @@ public class PlayerInventory : ScriptableObject
             {
                 int maxStackSize = 99;
                 int spaceLeft = maxStackSize - slot.quantity;
-                int amountToStack = Mathf.Min(amount, spaceLeft);
+                int amountToStack = Mathf.Min(amount, spaceLeft); 
 
                 slot.quantity += amountToStack;
-                amount -= amountToStack;
+                amount -= amountToStack; 
 
-                if (amount <= 0)
+                if (amountToStack > 0) 
                 {
+                    if (ItemNotificationManager.Instance != null)
+                    {
+                        ItemNotificationManager.Instance.AddNotification(seedToAdd.icon, seedToAdd.seedName, amountToStack);
+                    }
+
                     Debug.Log($"Adicionou {seedToAdd.seedName} x{amountToStack} à pilha existente. Total: {slot.quantity}");
                     onInventoryChangedCallback?.Invoke();
+                }
+
+                if (amount <= 0) 
+                {
                     return true;
                 }
             }
@@ -43,32 +52,39 @@ public class PlayerInventory : ScriptableObject
 
         if (inventorySlots.Count < maxInventorySlots && amount > 0)
         {
-            int maxStackSize = 99; 
+            int maxStackSize = 99;
             while (amount > 0)
             {
                 if (inventorySlots.Count >= maxInventorySlots)
                 {
                     Debug.LogWarning($"Inventário de sementes cheio! Não foi possível adicionar todas as {seedToAdd.seedName}. Restante: {amount}");
                     onInventoryChangedCallback?.Invoke();
-                    return false;
+                    return false; 
                 }
 
                 int amountToAdd = Mathf.Min(amount, maxStackSize);
                 inventorySlots.Add(new SeedInventorySlot(seedToAdd, amountToAdd));
-                amount -= amountToAdd;
+                amount -= amountToAdd; 
+
+
+                if (ItemNotificationManager.Instance != null)
+                {
+                    ItemNotificationManager.Instance.AddNotification(seedToAdd.icon, seedToAdd.seedName, amountToAdd);
+                }
+
                 Debug.Log($"Adicionou {seedToAdd.seedName} x{amountToAdd} em um novo slot.");
             }
             onInventoryChangedCallback?.Invoke();
             return true;
         }
-        else if (amount > 0)
+        else if (amount > 0) 
         {
             Debug.LogWarning($"Inventário de sementes cheio! Não foi possível adicionar {seedToAdd.seedName}.");
             return false;
         }
 
         onInventoryChangedCallback?.Invoke();
-        return true;
+        return true; 
     }
 
     public bool RemoveSeed(SeedData seedToRemove, int amount = 1)

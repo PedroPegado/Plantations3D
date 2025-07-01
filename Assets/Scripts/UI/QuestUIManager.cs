@@ -39,7 +39,7 @@ public class QuestUIManager : MonoBehaviour
     void Start()
     {
         UpdateQuestUI();
-        backgroundQuest.transform.DOMoveX(24, .5f).SetEase(Ease.OutQuad);
+        backgroundQuest.transform.DOMoveX(-50, .5f).SetEase(Ease.OutQuad);
     }
 
     public void ShowInteractionPrompt(string message)

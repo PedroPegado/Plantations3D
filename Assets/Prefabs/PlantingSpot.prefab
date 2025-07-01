@@ -43,7 +43,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: e9f58af2a54bd3f42a97de3ebc6de562, type: 3}
   m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 1
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -240,14 +240,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableMaterial: {fileID: 2100000, guid: 606c4094cb87c6244a135841ece0fbc1, type: 2}
-  growingMaterial: {fileID: 2100000, guid: bda16e77d264ed04dac213b55cf51d88, type: 2}
-  readyMaterial: {fileID: 2100000, guid: 3d9f5547fc7dec9478922989746dc4eb, type: 2}
+  growingMaterial: {fileID: 2100000, guid: 9371814c23743434e986835a36e7a8fb, type: 2}
+  readyMaterial: {fileID: 2100000, guid: c452548f42ceb034a82f1e337fd46c32, type: 2}
   plantTimeDisplayPrefab: {fileID: 3635444283052543960, guid: 697ec25617767294d92c079279fba145, type: 3}
   sproutStagePercentage: 0.3
   adultStagePercentage: 0.6
   sproutAppearDuration: 0.5
-  initialAdultYPosition: 0
+  initialAdultYPosition: 0.4
   finalAdultYPosition: 0.5
+  growthCompleteVFXPrefab: {fileID: 1455070998636618883}
 --- !u!136 &1008949627005558209
 CapsuleCollider:
   m_ObjectHideFlags: 0

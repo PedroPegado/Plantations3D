@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.VFX;
 
 public class PlantingSpot : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PlantingSpot : MonoBehaviour
     public float finalAdultYPosition = 0f;
 
     [Header("VFX")] 
-    public GameObject growthCompleteVFXPrefab;
+    public VisualEffect growthCompleteVFXPrefab;
 
     private PlayerMovement playerMovement;
 
@@ -209,7 +210,7 @@ public class PlantingSpot : MonoBehaviour
         isGrowing = false;
         isReadyToHarvest = true;
         Debug.Log($"Planta de {plantedSeed.seedName} cresceu e está pronta para colher em {gameObject.name}!");
-        Play(growthCompleteVFXPrefab);
+        growthCompleteVFXPrefab.Play();
 
         if (currentPlantTimeDisplay != null)
         {
@@ -226,6 +227,7 @@ public class PlantingSpot : MonoBehaviour
             return null;
         }
 
+        growthCompleteVFXPrefab.Stop();
         SeedData harvestedSeed = plantedSeed;
 
         isOccupied = false;
